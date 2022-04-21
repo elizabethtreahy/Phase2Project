@@ -23,7 +23,7 @@ function PostHome({ data, setData }) {
   function handleSubmit(comment) {
     const newPost = {
       id: data.length ? data.at(0).id + 1 : 1,
-      createdAt: new Date(),
+      createdAt: Date(),
       comment
     }
     data ? setData([...data, newPost]) : setData([newPost])

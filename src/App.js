@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/post">
           <PostHome data={largestIdFirst} setData={setData} />
         </Route>
-        <Route exact path="/archive">
+        <Route path="/archive">
           <Archive data={data} setData={setData} />
         </Route>
         <Route exact path="/">

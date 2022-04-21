@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 function ArchiveNavBar({ data }) {
   const newestFirstJournalEntries = data.map((entry) =>
     <div>
-      Journal {entry.id}
+      <Link to={`/archive/${entry.id}`}>Journal {entry.id}</Link>
     </div>)
   return (
     <div>
