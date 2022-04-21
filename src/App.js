@@ -13,11 +13,12 @@ function App() {
       .then((r) => r.json())
       .then(x => setData(x))
   }, [])
+  const largestIdFirst = data.sort((a, b) => b.id - a.id)
   return (
     <div>
       <Switch>
         <Route exact path="/post">
-          <PostHome data={data} setData={setData} />
+          <PostHome data={largestIdFirst} setData={setData} />
         </Route>
         <Route exact path="/archive">
           <Archive data={data} setData={setData} />

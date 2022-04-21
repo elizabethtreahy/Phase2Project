@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', boxShadow: '0 -1px 0 #000 inset'}}>
       <NavLink
         to="/"
         exact
@@ -17,22 +17,6 @@ function NavBar() {
       <div style={{ justifyContent: 'center', alignItems: 'center' }}>
         <h1 style={{ position: 'relative' }}>hello, feelings</h1>
       </div>
-      {/* <NavLink to="/"
-        exact>
-        LIVE
-      </NavLink>
-      <NavLink to="/"
-        exact>
-        LET FLY
-      </NavLink>
-      <NavLink to="/"
-        exact>
-        JOURNAL
-      </NavLink>
-      <NavLink to="/"
-        exact>
-        DRAFTS
-      </NavLink> */}
     </div>
   );
 }

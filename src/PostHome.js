@@ -20,15 +20,14 @@ function PostHome({ data, setData }) {
       setJournalChunk('')
     }
   }
-  console.log(journalChunk, journalState)
-  function handleSubmit(link, comment) {
+  function handleSubmit(comment) {
     const newPost = {
-      id: data.length ? data.at(-1).id + 1 : 1,
+      id: data.length ? data.at(0).id + 1 : 1,
       createdAt: new Date(),
-      link,
       comment
     }
     data ? setData([...data, newPost]) : setData([newPost])
+
     fetch(`http://localhost:3000/feelings`, {
       method: 'POST',
       headers: {
@@ -46,8 +45,8 @@ function PostHome({ data, setData }) {
   return (
     <div>
       <NavBar />
-      <div>
-        <div>
+      <div style={{ display: 'flex' }}>
+        <div style={{ boxShadow: '-1px 0 0 #000 inset' }}>
           <ArchiveNavBar data={data} />
         </div>
         <div>

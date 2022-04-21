@@ -1,13 +1,10 @@
 function ArchiveNavBar({ data }) {
-  const newestFirst = data.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-  const newestFirstJournalEntries = newestFirst.map((entry) =>
+  const newestFirstJournalEntries = data.map((entry) =>
     <div>
-      {entry.createdAt}
+      Journal {entry.id}
     </div>)
   return (
-    <div style={{
-      // position: 'absolute', width: '100px'
-      }}>
+    <div>
       {newestFirstJournalEntries}
     </div>
   )
