@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
 import NavBar from "./NavBar"
-
+import ArchiveNavBar from "./ArchiveNavBar"
 
 function PostHome({ data, setData }) {
   const [journalChunk, setJournalChunk] = useState('')
   const [journalState, setJournalState] = useState([])
   const flexClass = `bold`
   function handleChange(event) {
-    
+
     if (event.inputType === 'insertText') {
       if (event.data) {
         setJournalChunk(`${journalChunk}${event.data}`)
@@ -47,19 +47,26 @@ function PostHome({ data, setData }) {
     <div>
       <NavBar />
       <div>
-        {journalDisplay}{journalChunk}
+        <div>
+          <ArchiveNavBar data={data} />
+        </div>
+        <div>
+          <div>
+            {journalDisplay}{journalChunk}
+          </div>
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            handleSubmit(e.target[0].value)
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '800px' }}>
+              <textarea onInput={(e) => handleChange(e.nativeEvent)} style={{ height: "150px", width: "700px", }} placeholder={"your words here"} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '850px' }}>
+              <input type={"submit"} />
+            </div>
+          </form>
+        </div>
       </div>
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        handleSubmit(e.target[0].value, e.target[1].value)
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '800px' }}>
-          <textarea onInput={(e) => handleChange(e.nativeEvent)} style={{ height: "150px", width: "700px", }} placeholder={"your words here"} />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '850px' }}>
-          <input type={"submit"} />
-        </div>
-      </form>
     </div>
   )
 }
