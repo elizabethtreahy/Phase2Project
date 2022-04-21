@@ -23,6 +23,16 @@ function Archive({ data, setData }) {
     }
   }, [dataLoaded])
 
+  function handleClick() {
+    fetch(`http://localhost:3000/feelings/${currentJournal[0].id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+  }
+  // 
+
   const journalList = currentJournal.map((entry) =>
     <div>
       <div>
@@ -39,6 +49,7 @@ function Archive({ data, setData }) {
       <p>
         {journalList ? journalList : null}
       </p>
+      <button onClick={() => handleClick()}>Delete</button>
     </div>
   )
 }

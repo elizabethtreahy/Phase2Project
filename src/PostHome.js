@@ -49,7 +49,7 @@ function PostHome({ data, setData }) {
         <div style={{ boxShadow: '-1px 0 0 #000 inset' }}>
           <ArchiveNavBar data={data} />
         </div>
-        <div>
+        <div style={{marginRight: '36%', marginLeft: 'auto'}}>
           <div>
             {journalDisplay}{journalChunk}
           </div>
@@ -57,10 +57,19 @@ function PostHome({ data, setData }) {
             e.preventDefault()
             handleSubmit(e.target[0].value)
           }}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '800px' }}>
+            <div style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+              top: '500px',
+              display: 'block',
+              width: '30%',
+              marginLeft: '20px',
+              marginRight: 'auto',
+            }}>
               <textarea onInput={(e) => handleChange(e.nativeEvent)} style={{ height: "150px", width: "700px", }} placeholder={"your words here"} />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '850px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '550px' }}>
               <input type={"submit"} />
             </div>
           </form>
