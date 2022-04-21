@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
       <NavLink
         to="/"
         exact
@@ -14,7 +14,10 @@ function NavBar() {
       >
         <img style={{ height: "50px" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" />
       </NavLink>
-      <NavLink to="/"
+      <div style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <h1 style={{ position: 'relative' }}>hello, feelings</h1>
+      </div>
+      {/* <NavLink to="/"
         exact>
         LIVE
       </NavLink>
@@ -29,7 +32,7 @@ function NavBar() {
       <NavLink to="/"
         exact>
         DRAFTS
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 }
