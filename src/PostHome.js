@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react"
 import NavBar from "./NavBar"
 
+
 function PostHome({ data, setData }) {
   const [journalChunk, setJournalChunk] = useState('')
   const [journalState, setJournalState] = useState([])
-  
+  const flexClass = `bold`
   function handleChange(event) {
+    
     if (event.inputType === 'insertText') {
       if (event.data) {
         setJournalChunk(`${journalChunk}${event.data}`)
@@ -37,7 +39,7 @@ function PostHome({ data, setData }) {
 
   }
   const journalDisplay = journalState.map((line) =>
-    <div>
+    <div className={`${flexClass}`}>
       {line}
     </div>
   )
