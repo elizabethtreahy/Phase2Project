@@ -31,7 +31,6 @@ function Archive({ data, setData }) {
       },
     })
   }
-  // 
 
   const journalList = currentJournal.map((entry) =>
     <div>

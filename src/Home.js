@@ -29,7 +29,7 @@ function Home() {
       flexDirection: 'column'
     }}>
       <div style={{ flexDirection: 'row' }}>
-        <h1 ><Link style={{ textDecoration: 'none' }} to="/post">{state.length !== helloworld.length ? `${state}_` : state}</Link></h1>
+        <h1><Link className={'homefont'} style={{ textDecoration: 'none' }} to="/post">{state.length !== helloworld.length ? `${state}_` : state}</Link></h1>
       </div>
 
       <span style={{ textAlign: 'center', flexDirection: 'row', width: '400px' }}>{state.length !== helloworld.length ? `` : 'the journal for software engineers'}</span>

@@ -1,21 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 function NavBar() {
   return (
     <div style={{ textAlign: 'center', boxShadow: '0 -1px 0 #000 inset'}}>
-      <NavLink
-        to="/"
-        exact
-        activeStyle={{
-          background: "darkblue",
-        }}
-      >
-        <img style={{ height: "50px" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" />
+      <NavLink to="/" exact>
+       <SaveAsIcon className={'postIcon'} fontSize='large' />
       </NavLink>
       <div style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <h1 style={{ position: 'relative', textAlign: 'center' }}>hello, feelings</h1>
+        <h1 style={{ position: 'relative', textAlign: 'center' }}>HELLO, feelings.</h1>
       </div>
     </div>
   );
