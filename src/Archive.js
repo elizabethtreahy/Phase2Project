@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Redirect, useHistory } from "react-router-dom"
 import NavBar from "./NavBar"
 
 
@@ -7,7 +8,7 @@ function Archive({ data, setData }) {
 
   const [currentJournal, setCurrentJournal] = useState([])
   const [dataLoaded, setDataLoaded] = useState(false)
-
+  const history = useHistory()
   useEffect(() => {
     data.length ? setDataLoaded(true) : console.log('do nothing')
   })
@@ -24,12 +25,15 @@ function Archive({ data, setData }) {
   }, [dataLoaded])
 
   function handleClick() {
+    setData(data.filter((x) => x !== currentJournal[0]))
     fetch(`http://localhost:3000/feelings/${currentJournal[0].id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
     })
+    
+    history.push("/post")
   }
 
   const journalList = currentJournal.map((entry) =>

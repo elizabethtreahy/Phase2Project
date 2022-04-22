@@ -15,7 +15,7 @@ function App() {
   }, [])
   const largestIdFirst = data.sort((a, b) => b.id - a.id)
   return (
-    <div className={'body'}>
+    <div className={'home'}>
       <Switch>
         <Route exact path="/post">
           <PostHome data={largestIdFirst} setData={setData} />

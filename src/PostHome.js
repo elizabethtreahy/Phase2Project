@@ -18,10 +18,7 @@ function PostHome({ data, setData }) {
         journalState.splice(journalState.length)
         setJournalState([...journalState])
         const test = journalState[journalState.length - 1].split('')
-        console.log(test)
         setJournalBlock([...test])
-        console.log(journalBlock, journalState)
-        // journalState.splice(journalState.length)
         setBlockIndex(journalBlock.length - 1)
       }
     }
@@ -60,9 +57,9 @@ function PostHome({ data, setData }) {
   }
   console.log('hey', journalBlock)
   const journalDisplay = journalState.map((line) =>
-    <div>
+    <h3>
       {line}
-    </div>
+    </h3>
   )
   return (
     <div>
@@ -72,9 +69,9 @@ function PostHome({ data, setData }) {
           <ArchiveNavBar data={data} />
         </div>
         <div style={{ marginRight: '36%', marginLeft: 'auto' }}>
-          <div>
+          <h3>
             {journalDisplay}{journalBlock}
-          </div>
+          </h3>
           <form onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e.target[0].value)
