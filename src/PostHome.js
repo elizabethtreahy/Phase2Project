@@ -62,8 +62,8 @@ function PostHome({ data, setData }) {
 
   }
 
-  const journalDisplay = journalState.map((line) =>
-    <h3>
+  const journalDisplay = journalState.map((line, i) =>
+    <h3 key={`journalState ${i}`}>
       {line}
     </h3>
   )
@@ -75,9 +75,9 @@ function PostHome({ data, setData }) {
           <ArchiveNavBar data={data} />
         </div>
         <div style={{ marginRight: '36%', marginLeft: 'auto' }}>
-          <h3>
+          <div>
             {journalDisplay}{journalBlock}
-          </h3>
+          </div>
           <form onSubmit={(e) => {
             handleSubmit(e.target[0].value)
           }}>

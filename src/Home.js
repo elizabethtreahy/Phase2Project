@@ -15,9 +15,6 @@ function Home() {
       timer < helloworld.length - 1 ? setTimer(timer+1) : console.log('done')
     }, 800)
   }, [timer])
-
-  
-  console.log('state', state)
   return (
 
     <div style={{

@@ -7,7 +7,6 @@ import NavBar from "./NavBar";
 
 function App() {
   const [data, setData] = useState([])
-  console.log(data)
   useEffect(() => {
     fetch('http://localhost:3000/feelings')
       .then((r) => r.json())

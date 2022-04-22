@@ -15,8 +15,6 @@ function Archive({ data, setData }) {
 
   useEffect(() => {
     const urlLocation = window.location.href.replace('http://localhost:3001/archive/', '')
-    console.log('url', urlLocation)
-    console.log('data', data.find((entry) => entry.id == urlLocation))
     if (urlLocation !== 'http://localhost:3001/archive') {
       setCurrentJournal([data.find((entry) => entry.id == urlLocation)])
     } else {
@@ -36,8 +34,8 @@ function Archive({ data, setData }) {
     history.push("/post")
   }
 
-  const journalList = currentJournal.map((entry) =>
-    <div>
+  const journalList = currentJournal.map((entry, i) =>
+    <div key={`currentJournal ${i}`}>
       <h4>
         {entry ? entry.createdAt : null}
       </h4>
@@ -49,9 +47,9 @@ function Archive({ data, setData }) {
   return (
     <div>
       <NavBar />
-      <p>
+      <div>
         {journalList ? journalList : null}
-      </p>
+      </div>
       <button onClick={() => handleClick()}>Delete</button>
     </div>
   )
