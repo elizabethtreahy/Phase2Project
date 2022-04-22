@@ -1,3 +1,19 @@
 {
-  "feelings": []
+  "feelings": [
+    {
+      "id": 1,
+      "createdAt": "3/14/2022",
+      "comment": "hello, world"
+    },
+    {
+      "id": 2,
+      "createdAt": "4/12/2022",
+      "comment": "my problem\nis that\nwhen I start\nI don't know how to stop\nwhen I love\nI don't know how to turn it off\nwhen I give\nI don't know how to save anything\nfor myself.\n-giving"
+    },
+    {
+      "id": 3,
+      "createdAt": "4/22/2022",
+      "comment": "they say\ndesire is\na strong feeling\nof wanting to have something\nI think of you and\nI think of helen\nwho started a war that lasted ten years\nto have the man she loved\nI think of michaelangelo\npainting for hours and days and years\nand permanently damaging his eyes\nfor the sistine chapel\nI think of being nine and playing\nin my papa's workshop\nand finding a huge magnet\nand it getting stuck to the table\nit took all the strength my arms had to pry that thing off\ntoday I read\nabout two starts\nspiraling into one another\nthe energy between them so strong\nthey distorted space and time\nand when they finally combined\nthey burned bright enough\nto be seen\n130 million years later\ndarling\nwhat I have for you\nisn't just a strong feeling\nI will change the path of history for you\nI will risk blindness\nI will cling to you so tightly that scientists\nwill call me a fundamental force of nature\nI will cause waves that span galaxies\nwhat I'm trying to say is\nif you're ready\nI've been waiting\n-desire"
+    }
+  ]
 }

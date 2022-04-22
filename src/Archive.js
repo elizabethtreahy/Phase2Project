@@ -6,7 +6,7 @@ import NavBar from "./NavBar"
 
 function Archive({ data, setData }) {
 
-  const [currentJournal, setCurrentJournal] = useState([])
+  const [currentJournal, setCurrentJournal] = useState('')
   const [dataLoaded, setDataLoaded] = useState(false)
   const history = useHistory()
   useEffect(() => {
@@ -16,39 +16,37 @@ function Archive({ data, setData }) {
   useEffect(() => {
     const urlLocation = window.location.href.replace('http://localhost:3001/archive/', '')
     if (urlLocation !== 'http://localhost:3001/archive') {
-      setCurrentJournal([data.find((entry) => entry.id == urlLocation)])
+      setCurrentJournal(data.find((entry) => entry.id == urlLocation))
     } else {
       setCurrentJournal(data)
     }
   }, [dataLoaded])
 
   function handleClick() {
-    setData(data.filter((x) => x !== currentJournal[0]))
-    fetch(`http://localhost:3000/feelings/${currentJournal[0].id}`, {
+    setData(data.filter((x) => x !== currentJournal))
+    fetch(`http://localhost:3000/feelings/${currentJournal.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
     })
-    
+
     history.push("/post")
   }
 
-  const journalList = currentJournal.map((entry, i) =>
-    <div key={`currentJournal ${i}`}>
-      <h4>
-        {entry ? entry.createdAt : null}
-      </h4>
-      <div>
-        {entry ? entry.comment : null}
-      </div>
-    </div>
-  )
+  const splitJournal = currentJournal ? currentJournal.comment.split('\n') : null
+  const separatedJournal = splitJournal ? splitJournal.map((x, i) =>
+    <div key={`splitjournal ${i}`}>
+      {x}
+    </div>) : null
   return (
     <div>
       <NavBar />
       <div>
-        {journalList ? journalList : null}
+        {currentJournal?.createdAt}
+      </div>
+      <div>
+        {separatedJournal ? separatedJournal : null}
       </div>
       <button onClick={() => handleClick()}>Delete</button>
     </div>
