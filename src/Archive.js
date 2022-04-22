@@ -38,9 +38,9 @@ function Archive({ data, setData }) {
 
   const journalList = currentJournal.map((entry) =>
     <div>
-      <div>
+      <h4>
         {entry ? entry.createdAt : null}
-      </div>
+      </h4>
       <div>
         {entry ? entry.comment : null}
       </div>

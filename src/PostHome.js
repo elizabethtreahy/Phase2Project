@@ -7,6 +7,16 @@ function PostHome({ data, setData }) {
   const [journalBlock, setJournalBlock] = useState([])
   const [journalState, setJournalState] = useState([])
 
+  useEffect(() => {
+    setBlockIndex(journalBlock.length)
+  }, [journalState])
+
+  function newLine() {
+    setJournalState([...journalState, journalBlock.join('')])
+    setJournalBlock([])
+    setBlockIndex(0)
+  }
+
   function handleChange(event) {
     if (event.inputType === 'deleteContentBackward') {
       if (blockIndex > 0) {
@@ -15,14 +25,12 @@ function PostHome({ data, setData }) {
         setBlockIndex(blockIndex - 1)
       }
       if (blockIndex === 0) {
-        journalState.splice(journalState.length)
-        setJournalState([...journalState])
-        const test = journalState[journalState.length - 1].split('')
-        setJournalBlock([...test])
-        setBlockIndex(journalBlock.length - 1)
+        setJournalBlock(journalState[journalState.length - 1].split(''))
+        const dummy = journalState;
+        dummy.pop()
+        setJournalState([...dummy])
       }
     }
-
     if (event.inputType === 'insertText') {
       if (event.data) {
         setBlockIndex(blockIndex + 1)
@@ -31,17 +39,12 @@ function PostHome({ data, setData }) {
         newLine()
       }
     }
-
-    function newLine() {
-      setJournalState([...journalState, journalBlock.join('')])
-      setJournalBlock([])
-      setBlockIndex(0)
-    }
   }
+
   function handleSubmit(comment) {
     const newPost = {
       id: data.length ? data.at(0).id + 1 : 1,
-      createdAt: Date(),
+      createdAt: new Date().toLocaleDateString(),
       comment
     }
     data ? setData([...data, newPost]) : setData([newPost])
@@ -53,9 +56,12 @@ function PostHome({ data, setData }) {
       },
       body: JSON.stringify(newPost)
     })
+    setJournalBlock([])
+    setJournalState([])
+    setBlockIndex(0)
 
   }
-  console.log('hey', journalBlock)
+
   const journalDisplay = journalState.map((line) =>
     <h3>
       {line}
@@ -73,7 +79,6 @@ function PostHome({ data, setData }) {
             {journalDisplay}{journalBlock}
           </h3>
           <form onSubmit={(e) => {
-            e.preventDefault()
             handleSubmit(e.target[0].value)
           }}>
             <div style={{
@@ -86,7 +91,7 @@ function PostHome({ data, setData }) {
               marginLeft: '20px',
               marginRight: 'auto',
             }}>
-              <textarea onInput={(e) => handleChange(e.nativeEvent)} style={{ height: "150px", width: "600px", }} placeholder={"your words here"} />
+              <textarea  onInput={(e) => handleChange(e.nativeEvent)} style={{ height: "150px", width: "600px", }} placeholder={"your words here"} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', top: '550px' }}>
               <input type={"submit"} />
